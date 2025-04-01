@@ -6,7 +6,7 @@ type CategoriesType = {
 };
 
 const Categories: React.FC<CategoriesType> = ({ value, onClickCategory }) => {
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+  const categories = ['Все', 'Frontend', 'Backend', 'Libs', 'Сборщики', 'ДевОпс'];
 
   return (
     <div className='categories'>

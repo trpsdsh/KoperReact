@@ -10,10 +10,10 @@ import {
 } from '../redux/slices/filterSlice';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
-import PizzaBlock from '../components/PizzaBlock';
-import Skeleton from '../components/PizzaBlock/Skeleton';
+import BookBlock from '../components/BookBlock';
+import Skeleton from '../components/BookBlock/Skeleton';
 import Pagination from '../components/Pagination';
-import { fetchPizzas, selectPizza, StatusPizza } from '../redux/slices/pizzaSlice';
+import { fetchBooks, selectBooks, StatusBooks } from '../redux/slices/booksSlice';
 import NotFoundBlock from '../components/NotFoundBlock';
 import { useAppDispatch } from '../redux/store';
 
@@ -23,22 +23,22 @@ const Home: React.FC = () => {
 
   const { categoryId, sort: sortType, currentPage, searchValue } = useSelector(selectFilter);
 
-  const { items, status } = useSelector(selectPizza);
+  const { items, status } = useSelector(selectBooks);
 
-  const pizzasSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
+  const booksSkeleton = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
   React.useEffect(() => {
-    fetchPizzasArray();
+    fetchBooksArray();
   }, [searchValue, categoryId, sortType.sortProperty, sortType.order, currentPage]);
 
-  const fetchPizzasArray = async () => {
+  const fetchBooksArray = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `search=${searchValue}` : '';
 
     dispatch(
-      fetchPizzas({
+      fetchBooks({
         category,
         search,
         currentPage,
@@ -47,8 +47,8 @@ const Home: React.FC = () => {
     );
     window.scrollTo(0, 0);
   };
-  const pizzasArray = items.map((obj: any) => (
-    <PizzaBlock key={obj.id} {...obj} /> //spreadsyntax
+  const booksArray = items.map((obj: any) => (
+    <BookBlock key={obj.id} {...obj} /> //spreadsyntax
   ));
 
   const onClickCategory = (id: number) => {
@@ -95,11 +95,11 @@ const Home: React.FC = () => {
         <Categories value={categoryId} onClickCategory={onClickCategory} />
         <Sort />
       </div>
-      <h2 className='content__title'>Все пиццы</h2>
-      {status === StatusPizza.REJECTED ? (
+      <h2 className='content__title'>Все книги</h2>
+      {status === StatusBooks.REJECTED ? (
         <NotFoundBlock />
       ) : (
-        <div className='content__items'>{status === 'loading' ? pizzasSkeleton : pizzasArray}</div>
+        <div className='content__items'>{status === 'loading' ? booksSkeleton : booksArray}</div>
       )}
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>

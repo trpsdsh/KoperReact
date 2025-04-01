@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.bookInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 260px;
+  height: 370px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #232323;
+  margin-bottom: 20px;
+  opacity: 0.2;
+}
+
+.button {
+  display: flex;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  padding-bottom: 12px;
+  width: 210px;
+  min-width: 100px;
+  text-align: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid rgb(220.5, 220.5, 220.5);
+  justify-content: center;
+  margin: 5px;
+}
+
+.buttonText {
+  color: #c3c3c3;
+  padding-left: 10px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 20px;
+}

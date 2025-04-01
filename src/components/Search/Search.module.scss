@@ -1,13 +1,20 @@
 .root {
   position: relative;
 }
+
 .input {
-  border: 1px solid;
+  border: 1px #757575 solid;
   padding: 8px 45px;
   width: 300px;
-  border-radius: 30px;
+  border-radius: 15px;
   font-size: 16px;
   height: 51px;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.input:focus {
+  width: 350px;
+  padding: 8px 60px;
 }
 
 .iconSearch {
@@ -16,7 +23,12 @@
   position: absolute;
   left: 12px;
   top: 11px;
-  opacity: 0.4;
+  fill: #757575;
+  transition: left 0.3s ease;
+}
+
+.input:focus ~ .iconSearch {
+  left: 20px;
 }
 
 .iconClear {
@@ -25,5 +37,10 @@
   position: absolute;
   right: 12px;
   top: 11px;
-  opacity: 0.4;
+  fill: #757575;
+  transition: right 0.3s ease;
+}
+
+.input:focus ~ .iconClear {
+  right: 20px;
 }

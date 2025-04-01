@@ -11,5 +11,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/pizzaReactV2'
+  base: '/KoperReact'
 });

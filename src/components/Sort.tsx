@@ -13,8 +13,6 @@ type SortListType = {
 export const sortList: SortListType[] = [
   { name: 'Популярности ↓', sortProperty: 'rating', order: 'desc' },
   { name: 'Популярности ↑', sortProperty: 'rating', order: 'asc' },
-  { name: 'Цене ↓', sortProperty: 'price', order: 'desc' },
-  { name: 'Цене ↑', sortProperty: 'price', order: 'asc' },
   { name: 'Алфавиту ↓', sortProperty: 'title', order: 'desc' },
   { name: 'Алфавиту ↑', sortProperty: 'title', order: 'asc' },
 ];
