@@ -1,0 +1,158 @@
+@import '../../scss/variables';
+
+.container {
+  height: 920px;
+  margin: 40px;
+  @media (max-height: 850px) {
+    height: 100vh;
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.subtitle {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.amount {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.currency {
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+}
+
+.order {
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.paymentMethods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.paymentButton {
+  flex: 1 1 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: $gray-line;
+  border: 1px solid darken($gray-line, 5%);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  img {
+    width: 50px;
+    height: 30px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+
+  span {
+    color: darken($gray-line, 50%);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: darken($gray-line, 15%);
+    border-color: darken($gray-line, 15%);
+
+    span {
+      color: #fff;
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 12px 0 4px;
+}
+
+.input {
+  padding: 12px;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+  outline: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.column {
+  flex: 1;
+}
+
+.checkbox {
+  margin-top: 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payButton {
+  margin-top: 28px;
+  background-color: #000;
+  color: #fff;
+  padding: 16px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+.footnote {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+.link {
+  color: #000;
+  text-decoration: underline;
+}

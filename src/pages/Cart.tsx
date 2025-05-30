@@ -21,35 +21,37 @@ const Cart: React.FC = () => {
   }
 
   return (
-    <div className='container container--cart'>
-      <div className='cart'>
-        <div className='cart__top'>
-          <h2 className='content__title'>
-            Корзина
-          </h2>
-          <div onClick={onClickClear} className='cart__clear'>
+    <div className="container container--cart">
+      <div className="cart">
+        <div className="cart__top">
+          <h2 className="content__title">Корзина</h2>
+          <div onClick={onClickClear} className="cart__clear">
             <span>Очистить корзину</span>
           </div>
         </div>
-        <div className='content__items'>
+        <div className="content__items">
           {items.length === 0 ? (
             <p>Загрузка...</p>
           ) : (
-            items.map((item: any) => (
-              <CartItemBlock key={item.id} {...item} />
-            ))
+            items.map((item: any) => <CartItemBlock key={item.id} {...item} />)
           )}
         </div>
-        <div className='cart__bottom'>
-          <div className='cart__bottom-details'>
-            <span>Всего книг: <b>{cartCount} шт.</b></span>
+        <div className="cart__bottom">
+          <div className="cart__bottom-details">
+            <span>
+              Всего книг: <b>{cartCount} шт.</b>
+            </span>
           </div>
-          <div className='cart__bottom-buttons'>
-            <Link to='/' className='button button--outline button--add go-back-btn'>
+          <div className="cart__bottom-buttons">
+            <Link to="/" className="button button--outline button--add go-back-btn">
               <span>Вернуться назад</span>
             </Link>
-            <div className='button pay-btn'>
-              <span>Загрузить сейчас</span>
+            <div className="button pay-btn">
+              <Link to="/payment">
+                <span>{totalPrice}₽</span>
+                <br />
+                <span>Перейти к оплате</span>
+              </Link>
             </div>
           </div>
         </div>

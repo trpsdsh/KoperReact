@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,20 +11,23 @@
 .bookInfo {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
   width: 100%;
   margin-bottom: 20px;
 }
 
 .image {
-  width: 260px;
-  height: 370px;
+  width: 320px;
+  height: 450px;
+  margin-bottom: 50px;
 }
 
 .title {
   font-size: 24px;
   font-weight: bold;
   color: #333;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .separator {
@@ -61,4 +66,66 @@
   justify-content: center;
   gap: 100px;
   margin-top: 20px;
+}
+
+.stars {
+  font-size: 20px;
+  color: #f4c150;
+}
+
+.button:hover {
+  background-color: darken($color: $gray-line, $amount: 90);
+  border-color: darken($color: $gray-line, $amount: 90);
+
+  span {
+    color: $gray-line;
+  }
+}
+
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 20px;
+  padding-top: 50px;
+  height: auto;
+}
+
+.rating {
+  font-size: 24px;
+  color: #f5c518;
+}
+
+.pages {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-top: 30px;
+  text-indent: 2em;
+}
+
+.details {
+  text-align: left;
+  width: 100%;
+  max-width: 900px;
+  margin: 50px;
+}
+
+.priceAddWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
 }
