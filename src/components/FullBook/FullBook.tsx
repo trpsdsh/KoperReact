@@ -40,13 +40,12 @@ const FullBook = () => {
     async function fetchBook() {
       try {
         const { data } = await axios.get(
-          `https://67c4cd16c4649b9551b490e4.mockapi.io/koperBooks/${id}`,
+          `https://67c4cd16c4649b9551b490e4.mockapi.io/koperBooks/${id}}`,
         );
         console.log(data);
 
         setBook(data);
       } catch (error) {
-        alert('Ошибка при получении книги!');
         navigate('/');
       }
     }

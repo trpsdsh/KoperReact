@@ -6,7 +6,7 @@ import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import FullBook from './components/FullBook/FullBook';
 import Payment from './pages/Payment';
-
+import Quiz from './components/Quiz';
 import './scss/app.scss';
 import Layout from './pages/Layout';
 
@@ -19,6 +19,7 @@ function App() {
         <Route path="book/:id" element={<FullBook />} />
         <Route path="payment" element={<Payment />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="tests" element={<Quiz />} />
       </Route>
     </Routes>
   );

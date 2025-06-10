@@ -16,6 +16,7 @@ import Pagination from '../components/Pagination';
 import { fetchBooks, selectBooks, StatusBooks } from '../redux/slices/booksSlice';
 import NotFoundBlock from '../components/NotFoundBlock';
 import { useAppDispatch } from '../redux/store';
+import TestBlock from '../components/TestBlock';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
     window.scrollTo(0, 0);
   };
   const booksArray = items.map((obj: any) => (
-    <BookBlock key={obj.id} {...obj} /> //spreadsyntax
+    <BookBlock key={obj.title} {...obj} /> //spreadsyntax
   ));
 
   const onClickCategory = (id: number) => {
@@ -90,16 +91,16 @@ const Home: React.FC = () => {
   }, [categoryId, sortType.sortProperty, sortType.order, currentPage]);
 
   return (
-    <div className='container'>
-      <div className='content__top'>
-        <Categories value={categoryId} onClickCategory={onClickCategory} />
-        <Sort />
-      </div>
-      <h2 className='content__title'>Все книги</h2>
+    <div className="container">
+      <TestBlock />
+      <p className="titlep">Смотрите также:</p>
+      <Categories value={categoryId} onClickCategory={onClickCategory} />
+      <Sort />
+      <h2 className="content__title">Все книги</h2>
       {status === StatusBooks.REJECTED ? (
         <NotFoundBlock />
       ) : (
-        <div className='content__items'>{status === 'loading' ? booksSkeleton : booksArray}</div>
+        <div className="content__items">{status === 'loading' ? booksSkeleton : booksArray}</div>
       )}
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>

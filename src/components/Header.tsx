@@ -1,13 +1,25 @@
+import React, { useRef } from 'react';
 import logoSVG from '../assets/img/booksLogo.svg';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Search from './Search';
 import { selectCart } from '../redux/slices/cartSlice';
+import { useEffect } from 'react';
 
 const Header = () => {
   const { items } = useSelector(selectCart);
   const cartCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
   const location = useLocation();
+
+  const isMounted = React.useRef(false);
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [items]);
+
   return (
     <div className="header">
       <div className="container">
@@ -16,7 +28,7 @@ const Header = () => {
             <img width="38" src={logoSVG} alt="Pizza logo" />
             <div>
               <h1>Koper Books</h1>
-              <p>лучшие бесплатные книги</p>
+              <p>Тесты только тут</p>
             </div>
           </div>
         </Link>
