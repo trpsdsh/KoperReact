@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import filter from './slices/filterSlice';
 import cart from './slices/cartSlice';
 import books from './slices/booksSlice';
+import quiz from './slices/quizSlice';
 import { useDispatch } from 'react-redux';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     filter,
     cart,
     books,
+    quiz,
   },
 });
 

@@ -45,7 +45,6 @@ const BookBlock: React.FC<BookBlockType> = ({ id, title, price, image }) => {
           className={`button button--outline button--add ${addedCount > 0 ? 'added' : ''}`}
           disabled={addedCount > 0}>
           {addedCount > 0 ? (
-            // Галочка
             <svg
               width="12"
               height="12"
@@ -55,7 +54,6 @@ const BookBlock: React.FC<BookBlockType> = ({ id, title, price, image }) => {
               <path d="M4.5 9.5L1.5 6.5L0.5 7.5L4.5 11.5L12 4L11 3L4.5 9.5Z" fill="white" />
             </svg>
           ) : (
-            // Плюс
             <svg
               width="12"
               height="12"

@@ -7,14 +7,14 @@ export const fetchBooks = createAsyncThunk<BookState[], FetchBooksParams>(
   async (params) => {
     const { category, search, currentPage, sortType } = params;
     const { data } = await axios.get<BookState[]>(
-      `https://67c4cd16c4649b9551b490e4.mockapi.io/koperBooks?page=${currentPage}&limit=8&${category}&${search}&sortBy=${sortType.sortProperty}&order=${sortType.order}`
+      `https://67c4cd16c4649b9551b490e4.mockapi.io/koperBooks?page=${currentPage}&limit=8&${category}&${search}&sortBy=${sortType.sortProperty}&order=${sortType.order}`,
     );
 
-    return data.map(item => ({
+    return data.map((item) => ({
       ...item,
-      count: item.count || 0  // Устанавливаем значение по умолчанию
+      count: item.count || 0,
     }));
-  }
+  },
 );
 
 export enum StatusBooks {

@@ -54,6 +54,11 @@
   border: 1px solid rgb(220.5, 220.5, 220.5);
   justify-content: center;
   margin: 5px;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 }
 
 .buttonText {

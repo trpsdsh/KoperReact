@@ -1,42 +1,63 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { fetchQuizzes, selectQuizzes, Quiz } from '../../redux/slices/quizSlice';
+import { addItem, selectCart } from '../../redux/slices/cartSlice';
+import { useAppDispatch } from '../../redux/store';
 import styles from './TestBlock.module.scss';
 
-const quizzes = [
-  { id: 1, name: 'Тест на знание', colSpan: 2, bought: true, price: 0 },
-  { id: 2, name: 'Тест на незнание', colSpan: 1, bought: false, price: 299 },
-  { id: 3, name: 'Тест на незнание', colSpan: 1, bought: false, price: 199 },
-  { id: 4, name: 'Тест на незнание', colSpan: 1, bought: true, price: 0 },
-];
-
 const TestBlock: React.FC = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleAddToCart = (quizId: number) => {
-    alert(`Тест добавлен в корзину`);
+  const quizzes = useSelector(selectQuizzes);
+  const cart = useSelector(selectCart);
+
+  useEffect(() => {
+    if (quizzes.length === 0) {
+      dispatch(fetchQuizzes());
+    }
+  }, [dispatch, quizzes.length]);
+
+  const isInCart = (id: string) => cart.items.some((item) => item.id === id);
+
+  const handleAddToCart = (quiz: Quiz) => {
+    dispatch(
+      addItem({
+        id: quiz.id,
+        title: quiz.title,
+        price: quiz.price,
+        image: quiz.image,
+        count: 1,
+      }),
+    );
   };
 
   return (
     <div className={styles.container}>
-      {quizzes.map(({ id, name, colSpan, bought, price }) => {
-        const quizClass = styles[`quiz`] || '';
+      {quizzes.map((quiz, index) => {
+        const { id, title, image, bought, price, questions } = quiz;
+
+        const colSpan = index % 3 === 0 ? 2 : 1;
+        const accessible = bought || price === 0 || isInCart(id);
+
         return (
-          <div
-            key={id}
-            className={`${styles.item} ${quizClass}`}
-            style={{ gridColumn: `span ${colSpan}` }}>
+          <div key={id} className={styles.item} style={{ gridColumn: `span ${colSpan}` }}>
             <div className={styles.content}>
-              <h3>{name}</h3>
-              {!bought && <span className={styles.price}>{price} ₽</span>}
+              <h3>{title}</h3>
+              <img src={image} alt={title} />
+              {!bought && price > 0 && <span className={styles.price}>{price} ₽</span>}
             </div>
+
             <div className={styles.actions}>
-              {bought ? (
-                <button onClick={() => navigate(`/tests`)}>Перейти к тесту</button>
+              {accessible ? (
+                <button onClick={() => navigate(`/test/${id}`)}>Перейти к тесту</button>
               ) : (
-                <button onClick={() => handleAddToCart(id)}>Добавить в корзину</button>
+                <button className={styles.addToCart} onClick={() => handleAddToCart(quiz)}>
+                  Добавить в корзину
+                </button>
               )}
             </div>
-            <div className={styles.picture} />
           </div>
         );
       })}

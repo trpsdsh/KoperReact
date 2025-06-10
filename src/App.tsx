@@ -19,7 +19,7 @@ function App() {
         <Route path="book/:id" element={<FullBook />} />
         <Route path="payment" element={<Payment />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="tests" element={<Quiz />} />
+        <Route path="test/:id" element={<Quiz />} />
       </Route>
     </Routes>
   );
