@@ -9,7 +9,6 @@ import { useAppDispatch } from '../redux/store';
 const Cart: React.FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const dispatch = useAppDispatch();
-
   const onClickClear = () => {
     dispatch(clearItem());
   };

@@ -1,10 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import logoSVG from '../assets/img/booksLogo.svg';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Search from './Search';
 import { selectCart } from '../redux/slices/cartSlice';
-import { useEffect } from 'react';
 
 const Header = () => {
   const { items } = useSelector(selectCart);

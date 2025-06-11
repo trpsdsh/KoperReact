@@ -3,10 +3,9 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
-  @media (max-width:500px) {
-   padding: 0;
-   border: 0;
-    
+  @media (max-width: 500px) {
+    padding: 0;
+    border: 0;
   }
 
   .container {
@@ -28,9 +27,8 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         display: none;
-        
       }
     }
 

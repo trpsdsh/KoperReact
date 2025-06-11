@@ -1,9 +1,10 @@
+@import '../../scss/variables';
 .quizPage {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background: linear-gradient(to right, #f0f9ff, #fff);
+  background: $gray-line;
 }
 
 .card {
@@ -11,9 +12,9 @@
   background-color: #fff;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 75%;
+  border: 1px solid $black;
 }
 
 .question {
@@ -27,39 +28,42 @@
   margin-bottom: 30px;
 
   li {
-    background-color: #e3f2fd;
+    background: $gray-line;
     margin: 10px 0;
     padding: 12px;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
+    border: 1px solid $black;
     &:hover {
-      background-color: #bbdefb;
+      background: darken($black, 80%);
+      color: $gray-line;
     }
   }
 }
 .selected {
-  background-color: #64b5f6;
-  color: white;
+  color: $black;
   font-weight: bold;
+  font-size: 20px;
 }
 button {
-  background-color: #2196f3;
-  color: white;
+  background: $black;
+  color: $gray-line;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 15px;
 
   &:hover {
-    background-color: #1976d2;
+    background: darken($gray-line, 50px);
   }
 
   &:disabled {
-    background-color: #ccc;
+    background: darken($black, 80%);
+    color: $gray-line;
     cursor: not-allowed;
   }
 }

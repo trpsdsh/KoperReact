@@ -2,7 +2,6 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
 
-// Типы
 export type Option = {
   id: number;
   text: string;
@@ -25,7 +24,6 @@ export type Quiz = {
   recommendedBookId?: number;
 };
 
-// Состояние
 interface QuizState {
   items: Quiz[];
   status: 'loading' | 'success' | 'error';
@@ -36,13 +34,11 @@ const initialState: QuizState = {
   status: 'loading',
 };
 
-// Async thunk
 export const fetchQuizzes = createAsyncThunk<Quiz[]>('quiz/fetchAll', async () => {
   const { data } = await axios.get<Quiz[]>('https://67c4cd16c4649b9551b490e4.mockapi.io/test');
   return data;
 });
 
-// Slice
 const quizSlice = createSlice({
   name: 'quiz',
   initialState,
@@ -73,13 +69,8 @@ const quizSlice = createSlice({
   },
 });
 
-// Экшены
 export const { markQuizAsBought, setQuizzes } = quizSlice.actions;
-
-// Селекторы
 export const selectQuizzes = (state: RootState) => state.quiz.items;
 export const selectQuizById = (id: string) => (state: RootState) =>
   state.quiz.items.find((quiz) => quiz.id === id);
-
-// Редюсер
 export default quizSlice.reducer;
